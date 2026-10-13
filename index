@@ -3,302 +3,1240 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wongue Davy Cédric — Ingénieur · Asset Management & Finance</title>
+<title>Wongue Davy Cédric — Candidature stage · Harvest Asset Management</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0b0b0d; --bg2:#101014; --ink:#ece9e2; --mut:#8a877f;
-  --line:rgba(236,233,226,.14); --accent:#c8f04a; --accent2:#7dd6c2;
+  --bg:#FFFFFF;
+  --ink:#1E2A38;
+  --mut:#667687;
+  --line:rgba(30,42,56,.12);
+  --panel:#1E2A38;
+  --blue:#2E75B6;
+  --blue-dark:#1F5A8F;
+  --blue-light:#5A9BD4;
+  --gutter:32px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',sans-serif;overflow-x:hidden;line-height:1.5}
-::selection{background:var(--accent);color:#0b0b0d}
-a{color:var(--ink);text-decoration:none}
-a:hover{color:var(--accent)}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
+  font-size:13px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+section[id]{scroll-margin-top:96px}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
 
-/* ---------- NAV ---------- */
-nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;
-  padding:1.2rem 2rem;mix-blend-mode:difference}
-nav .logo{font-weight:700;letter-spacing:.05em}
-nav .links a{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;margin-left:1.6rem;color:var(--ink)}
-@media(max-width:640px){nav .links a{margin-left:.9rem;font-size:.65rem}}
+.page-label{
+  text-align:center;font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--mut);padding:22px 0 6px;font-weight:500;
+}
 
-/* ---------- HERO ---------- */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 2rem;position:relative}
-.hero .kicker{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem}
-.hero h1{font-family:'Instrument Serif',serif;font-weight:400;line-height:.95;letter-spacing:-.02em}
-.hero h1 span{display:block;font-size:clamp(2.6rem,9vw,7.5rem)}
-.hero h1 .it{font-style:italic;color:var(--mut)}
-.hero h1 em{font-style:italic;color:var(--accent)}
-.hero .meta{margin-top:3rem;display:flex;gap:3rem;flex-wrap:wrap;font-size:.78rem;color:var(--mut);letter-spacing:.1em;text-transform:uppercase}
-.hero .meta b{display:block;color:var(--ink);font-weight:500;margin-top:.3rem;text-transform:none;letter-spacing:0;font-size:.95rem}
-.scroll-cue{position:absolute;bottom:2rem;left:2rem;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mut)}
-.scroll-cue::after{content:'';display:block;width:1px;height:44px;background:var(--line);margin-top:.8rem;animation:drip 2.2s ease-in-out infinite;transform-origin:top}
-@keyframes drip{0%{transform:scaleY(0)}45%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+/* HEADER */
+.site-head{
+  position:sticky;top:0;z-index:100;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  padding:12px var(--gutter);
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-mark{
+  width:22px;height:22px;border:2px solid var(--ink);position:relative;flex-shrink:0;
+}
+.brand-mark::after{content:'';position:absolute;inset:5px;background:var(--blue)}
+.brand-name{font-size:11px;font-weight:600;line-height:1.1;letter-spacing:-.01em}
+.head-nav{
+  display:flex;gap:28px;font-size:11px;font-weight:500;letter-spacing:.02em;
+  justify-self:center;align-items:center;
+}
+.head-nav a{color:var(--mut);position:relative;padding-bottom:3px;transition:color .25s}
+.head-nav a:hover{color:var(--ink)}
+.head-nav a.active{color:var(--ink)}
+.head-nav a.active::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--blue);
+}
+.head-nav a.nav-highlight{
+  color:var(--blue);font-weight:700;
+  padding:7px 16px;border-radius:99px;
+  background:rgba(46,117,182,.10);
+  display:inline-flex;align-items:center;gap:8px;
+}
+.head-nav a.nav-highlight::before{
+  content:'';width:6px;height:6px;border-radius:50%;background:var(--blue);
+}
+.head-nav a.nav-highlight:hover,
+.head-nav a.nav-highlight.active{color:#fff;background:var(--blue)}
+.head-nav a.nav-highlight:hover::before,
+.head-nav a.nav-highlight.active::before{background:#fff}
+.head-right{justify-self:end;display:flex;align-items:center;gap:10px}
 
-/* ---------- MANIFESTE ---------- */
-.manifesto{padding:22vh 2rem;max-width:60rem;margin:0 auto}
-.manifesto p{font-family:'Instrument Serif',serif;font-size:clamp(1.6rem,3.4vw,2.6rem);line-height:1.35;color:var(--ink)}
-.manifesto p em{font-style:italic;color:var(--accent)}
-.manifesto .who{margin-top:2.5rem;font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:var(--mut)}
+.lang-btn{
+  display:inline-flex;align-items:center;height:26px;padding:0 12px;
+  border:1px solid var(--line);border-radius:99px;background:transparent;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;letter-spacing:.08em;font-weight:600;color:var(--mut);
+  gap:4px;transition:border-color .25s,color .25s;
+}
+.lang-btn:hover{border-color:var(--ink);color:var(--ink)}
+.lang-btn .sep{color:var(--line);font-weight:400}
+.lang-btn .lg{opacity:.5;transition:color .25s,opacity .25s}
+.lang-btn .lg.active{color:var(--blue);opacity:1}
+.lang-btn:hover .lg.active{color:var(--blue-dark)}
 
-/* ---------- CHAPITRES ---------- */
-.chapters{padding:0 2rem 8rem}
-.ch-head{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:1.2rem}
-.ch-head h2{font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mut);font-weight:400}
-.ch-head span{font-size:.72rem;color:var(--mut)}
-.chapter{display:grid;grid-template-columns:6rem 1fr 1fr;gap:2rem;padding:4rem 0;border-bottom:1px solid var(--line);align-items:start}
-.chapter .num{font-family:'IBM Plex Mono',monospace;font-size:.85rem;color:var(--accent);padding-top:.5rem}
-.chapter h3{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.05}
-.chapter h3 span{display:block;font-style:italic;color:var(--mut);font-size:.55em;margin-top:.4rem}
-.chapter .body{color:var(--mut);font-size:1rem;max-width:34rem}
-.chapter .body p+p{margin-top:1rem}
-.chapter .body ul{list-style:none;margin-top:1rem}
-.chapter .body li{padding:.35rem 0 .35rem 1.2rem;position:relative;font-size:.95rem}
-.chapter .body li::before{content:'→';position:absolute;left:0;color:var(--accent2)}
-.chapter .body .fin{color:var(--accent2);font-size:.85rem;margin-top:1.2rem;display:block;border-left:2px solid var(--accent2);padding-left:.9rem}
-.chapter .date{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-top:1.2rem;display:block}
-@media(max-width:820px){.chapter{grid-template-columns:1fr;gap:1rem}}
+.head-icon{
+  width:26px;height:26px;border:1px solid var(--ink);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:11px;
+  transition:background .25s,color .25s,border-color .25s;
+}
+.head-icon:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
 
-/* ---------- INTERLUDE : interactive ---------- */
-.interlude{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:6rem 2rem;text-align:center}
-.interlude h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(1.8rem,4vw,3rem);margin-bottom:.6rem}
-.interlude .sub{color:var(--mut);font-size:.9rem;margin-bottom:3rem}
-#chart{width:100%;max-width:760px;height:320px;display:block;margin:0 auto}
-.chart-note{margin-top:1.4rem;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mut)}
-.chart-legend{display:flex;justify-content:center;gap:2rem;margin-top:.8rem;font-size:.75rem;color:var(--mut);flex-wrap:wrap}
-.chart-legend i{display:inline-block;width:.7rem;height:.7rem;border-radius:50%;margin-right:.45rem;vertical-align:middle}
-.btn-line{display:inline-block;margin-top:3rem;border:1px solid var(--line);padding:.9rem 2.4rem;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;transition:.3s;background:none;color:var(--ink);cursor:pointer;font-family:inherit}
-.btn-line:hover{border-color:var(--accent);color:var(--accent)}
+@media(max-width:760px){
+  .site-head{grid-template-columns:auto 1fr auto;gap:12px;padding:10px var(--gutter)}
+  .head-nav{gap:14px;font-size:10px}
+  .head-nav a:nth-child(3){display:none}
+  html{scroll-padding-top:80px}
+  section[id]{scroll-margin-top:80px}
+}
+@media(max-width:520px){
+  .brand-name{display:none}
+  .head-nav a:nth-child(2){display:none}
+}
 
-/* ---------- INDEX COMPÉTENCES ---------- */
-.index{padding:8rem 2rem;max-width:70rem;margin:0 auto}
-.index .row{display:grid;grid-template-columns:3rem 1fr auto;gap:1.5rem;align-items:baseline;padding:1.6rem 0;border-bottom:1px solid var(--line);transition:.3s}
-.index .row:hover{padding-left:1rem}
-.index .row .i{font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--mut)}
-.index .row .n{font-family:'Instrument Serif',serif;font-size:clamp(1.4rem,3vw,2.2rem);font-weight:400}
-.index .row .n small{display:block;font-family:'Space Grotesk';font-size:.78rem;color:var(--mut);margin-top:.2rem;letter-spacing:.05em}
-.index .row .tag{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--accent);border:1px solid rgba(200,240,74,.35);border-radius:99px;padding:.2rem .7rem;white-space:nowrap}
+/* HERO */
+.hero-ss{
+  display:grid;grid-template-columns:1fr 1fr;min-height:520px;
+  padding:0 var(--gutter);
+}
+.hero-left{
+  padding:60px 40px 70px 0;
+  display:flex;flex-direction:column;justify-content:center;
+  border-right:1px solid var(--line);
+}
+.hero-left h1{
+  font-size:clamp(26px,3.4vw,44px);
+  font-weight:700;letter-spacing:-.025em;line-height:1.1;
+  max-width:15ch;
+}
+.hero-left h1 em{
+  font-style:normal;color:var(--blue);
+  background:linear-gradient(transparent 70%,rgba(90,155,212,.28) 70%);
+}
+.hero-lede{font-size:12px;color:var(--mut);margin-top:20px;max-width:38ch}
+.link-underline{
+  display:inline-block;margin-top:18px;font-size:12px;font-weight:600;
+  border-bottom:1.5px solid var(--ink);padding-bottom:2px;
+  align-self:flex-start;transition:color .25s,border-color .25s;
+}
+.link-underline:hover{color:var(--blue);border-color:var(--blue)}
 
-/* ---------- LANGUES & MOBILITÉ ---------- */
-.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:70rem;margin:0 auto;padding:0 2rem 8rem}
-.duo .col{padding:2.5rem;border:1px solid var(--line)}
-.duo .col:first-child{border-right:none}
-.duo h3{font-size:.75rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mut);font-weight:400;margin-bottom:1.8rem}
-.duo .item{display:flex;justify-content:space-between;padding:.9rem 0;border-bottom:1px solid var(--line);font-size:1rem}
-.duo .item:last-child{border-bottom:none}
-.duo .item .lv{font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--accent2)}
-@media(max-width:720px){.duo{grid-template-columns:1fr}.duo .col:first-child{border-right:1px solid var(--line);border-bottom:none}}
+.hero-right{
+  position:relative;background:var(--panel);overflow:hidden;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:40px;
+}
+.hero-right::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(90,155,212,.16), transparent 55%),
+    radial-gradient(ellipse at 90% 100%, rgba(46,117,182,.40), transparent 55%);
+}
+.hero-overlay{position:relative;z-index:2}
+.hero-overlay .rule{width:32px;height:2px;background:var(--blue-light);margin-bottom:14px}
+.hero-overlay .h-name{
+  font-size:clamp(22px,2.6vw,32px);
+  font-weight:700;letter-spacing:-.025em;line-height:1.1;color:#fff;
+}
+.hero-overlay .h-name em{
+  display:block;font-style:normal;font-size:11px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--blue-light);margin-top:6px;
+}
+.hero-overlay .h-meta{
+  margin-top:18px;display:flex;flex-wrap:wrap;gap:16px;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  color:rgba(255,255,255,.85);letter-spacing:.03em;
+}
+.hero-overlay .h-meta span{display:inline-flex;align-items:center;gap:6px}
+.hero-overlay .h-meta .dot{width:5px;height:5px;border-radius:50%;background:var(--blue-light)}
 
-/* ---------- CONTACT ---------- */
-.contact{padding:20vh 2rem 12vh;text-align:center;border-top:1px solid var(--line)}
-.contact h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(2.6rem,7vw,5.5rem);line-height:1.05}
-.contact h2 em{font-style:italic;color:var(--accent)}
-.contact p{color:var(--mut);margin:2rem auto 3rem;max-width:34rem}
-.contact .links a{display:inline-block;margin:.5rem;padding:1rem 2.2rem;border:1px solid var(--line);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;transition:.3s}
-.contact .links a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px)}
-.contact .mob{margin-top:3rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
-.contact .mob b{color:var(--accent2);font-weight:500}
-footer{padding:2rem;text-align:center;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);border-top:1px solid var(--line)}
+@media(max-width:820px){
+  .hero-ss{grid-template-columns:1fr;min-height:auto}
+  .hero-left{border-right:none;border-bottom:1px solid var(--line);padding:30px 0 50px}
+  .hero-right{min-height:360px}
+}
 
-/* ---------- Reveal ---------- */
-.rv{opacity:0;transform:translateY(36px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+/* SECTIONS */
+.section-ss{padding:70px var(--gutter) 40px;border-top:1px solid var(--line)}
+.section-ss .head-row{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:40px;
+  margin-bottom:36px;
+}
+.h-big{
+  font-size:clamp(22px,2.4vw,32px);font-weight:700;letter-spacing:-.025em;line-height:1.15;
+  max-width:20ch;
+}
+.section-lede{font-size:12px;color:var(--mut);max-width:44ch;line-height:1.65}
+@media(max-width:760px){.section-ss .head-row{flex-direction:column;gap:16px}}
+
+/* CARTES PARCOURS */
+.blend-cards{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px;
+}
+.blend-card{
+  position:relative;background:var(--panel);color:#fff;
+  min-height:340px;padding:24px 22px;
+  display:flex;flex-direction:column;
+  transition:transform .3s, background .3s;
+}
+.blend-card:hover{transform:translateY(-4px);background:#263445}
+.blend-card::before{
+  content:'';position:absolute;top:-80px;right:-80px;
+  width:200px;height:200px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.08);
+}
+.blend-card::after{
+  content:'';position:absolute;top:62px;left:22px;
+  width:28px;height:2px;background:var(--blue-light);
+}
+.blend-num{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;
+  letter-spacing:.1em;color:var(--blue-light);margin-bottom:24px;
+}
+.blend-intro{
+  font-size:11.5px;line-height:1.65;color:rgba(255,255,255,.78);
+  position:relative;z-index:2;
+}
+.blend-intro em{font-style:normal;color:var(--blue-light);font-weight:600}
+.blend-foot{margin-top:auto;position:relative;z-index:2;padding-top:24px}
+.blend-name{
+  font-size:15px;font-weight:700;letter-spacing:-.01em;line-height:1.2;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.blend-name .circ{
+  width:16px;height:16px;border-radius:50%;border:1.5px solid var(--blue-light);
+  display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.blend-name .circ::after{content:'';width:5px;height:5px;border-radius:50%;background:var(--blue-light)}
+.blend-sub{font-size:11px;color:rgba(255,255,255,.55);margin-top:6px}
+.dot-rating{margin-top:12px;font-size:9px;letter-spacing:.3em;color:var(--blue-light)}
+.dot-rating .off{color:rgba(255,255,255,.2)}
+@media(max-width:900px){.blend-cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.blend-cards{grid-template-columns:1fr}}
+
+/* DEUX COLONNES */
+.two-col{
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+  padding:80px var(--gutter);border-top:1px solid var(--line);
+}
+.two-col.reverse .col-text{order:2}
+.two-col.reverse .col-visual{order:1}
+.col-text h2{
+  font-size:clamp(20px,2.2vw,28px);font-weight:700;letter-spacing:-.02em;
+  line-height:1.15;margin-bottom:20px;
+}
+.col-text p{font-size:12px;color:var(--mut);margin-bottom:12px;line-height:1.7;max-width:44ch}
+.col-text ul{list-style:none;margin:14px 0 18px}
+.col-text ul li{
+  font-size:12px;color:var(--ink);padding:10px 0 10px 16px;position:relative;
+  border-bottom:1px solid var(--line);
+  transition:padding-left .25s, color .25s;
+}
+.col-text ul li:last-child{border-bottom:none}
+.col-text ul li::before{
+  content:'';position:absolute;left:0;top:17px;
+  width:6px;height:6px;background:var(--blue);border-radius:50%;
+}
+.col-text ul li:hover{padding-left:22px;color:var(--blue-dark)}
+.col-text ul li b{font-weight:600}
+
+.col-visual{
+  position:relative;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;
+}
+.visual-panel{
+  width:75%;aspect-ratio:3/4;background:var(--panel);position:relative;overflow:hidden;
+  transition:transform .35s;
+}
+.visual-panel::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,transparent 40%,rgba(90,155,212,.20));
+}
+.col-visual:hover .visual-panel{transform:translateY(-6px)}
+.visual-panel .big-num{
+  position:absolute;bottom:24px;left:24px;
+  font-family:'IBM Plex Mono',monospace;font-size:56px;font-weight:500;
+  color:var(--blue-light);letter-spacing:-.02em;line-height:1;z-index:2;
+}
+.visual-panel .big-label{
+  position:absolute;bottom:34px;left:96px;
+  font-size:11px;color:rgba(255,255,255,.6);letter-spacing:.15em;
+  text-transform:uppercase;font-weight:500;z-index:2;
+}
+.info-panel{
+  position:absolute;bottom:-20px;right:0;
+  background:#fff;border:1px solid var(--line);padding:18px 20px;
+  width:62%;min-width:220px;
+  box-shadow:0 20px 40px -20px rgba(30,42,56,.15);
+}
+.info-panel .ip-name{
+  font-size:13px;font-weight:700;letter-spacing:-.01em;margin-bottom:12px;
+  padding-bottom:10px;border-bottom:1px solid var(--line);
+}
+.info-row{
+  display:flex;justify-content:space-between;font-size:11px;
+  padding:5px 0;color:var(--mut);
+}
+.info-row b{color:var(--ink);font-weight:600}
+.info-row .dots{letter-spacing:.2em;color:var(--blue);font-size:9px}
+@media(max-width:820px){
+  .two-col{grid-template-columns:1fr;gap:40px;padding:60px var(--gutter)}
+  .two-col.reverse .col-text{order:1}
+  .two-col.reverse .col-visual{order:2}
+  .col-visual{max-width:400px;margin:0 auto;width:100%}
+}
+
+/* CERTIFICATS */
+.cert-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px;
+}
+.cert-card{
+  background:#fff;border:1px solid var(--line);overflow:hidden;
+  cursor:pointer;display:flex;flex-direction:column;
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+}
+.cert-card:hover{
+  border-color:var(--ink);transform:translateY(-4px);
+  box-shadow:0 20px 40px -20px rgba(46,117,182,.28);
+}
+.cert-thumb{
+  aspect-ratio:4/3;background:#F3F7FB;overflow:hidden;position:relative;
+  display:flex;align-items:center;justify-content:center;
+}
+.cert-thumb img{
+  width:100%;height:100%;object-fit:cover;object-position:top center;
+  filter:blur(14px) saturate(.65);
+  transition:filter .6s;
+}
+.cert-thumb.preview-visible img{filter:blur(0) saturate(1)}
+.cert-thumb.preview-visible .load-overlay{display:none}
+.cert-thumb .soon{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;padding:16px;text-align:center;
+}
+.cert-thumb .soon svg{
+  width:26px;height:26px;stroke:var(--blue);fill:none;
+  stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;opacity:.6;
+}
+.cert-thumb .soon b{font-size:11px;font-weight:600;color:var(--blue);line-height:1.3}
+.cert-info{padding:16px 14px 18px;text-align:center}
+.cert-info .t{
+  font-size:11px;font-weight:600;line-height:1.4;color:var(--ink);
+}
+.cert-card:hover .cert-info .t{color:var(--blue)}
+.cert-empty{
+  grid-column:1/-1;padding:50px 20px;text-align:center;
+  border:1px dashed var(--line);color:var(--mut);font-size:12px;
+}
+@media(max-width:900px){.cert-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.cert-grid{grid-template-columns:1fr}}
+
+.cert-thumb .load-overlay{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;padding:12px;text-align:center;
+  background:rgba(255,255,255,.35);
+}
+.cert-thumb .load-overlay .spinner{
+  width:24px;height:24px;border-radius:50%;
+  border:2px solid rgba(46,117,182,.15);border-top-color:var(--blue);
+  animation:spin 1s linear infinite;
+}
+.cert-thumb .load-overlay .load-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue);font-weight:600;line-height:1.3;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* CHART */
+.chart-box{
+  border:1px solid var(--line);margin-top:20px;
+  background:#fff;overflow:hidden;
+}
+.chart-head{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:26px 32px 16px;border-bottom:1px solid var(--line);
+}
+.chart-head .l{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--mut);
+}
+.chart-head .l b{color:var(--ink);font-weight:600}
+.chart-head .l .dot-live{
+  display:inline-block;width:6px;height:6px;border-radius:50%;
+  background:var(--blue);margin-right:6px;vertical-align:middle;
+}
+.chart-svg{width:100%;height:280px;display:block}
+.chart-legend{
+  display:flex;gap:24px;padding:16px 32px 24px;
+  font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--mut);font-weight:500;border-top:1px solid var(--line);
+}
+.chart-legend span{display:flex;align-items:center;gap:8px}
+.chart-legend i{width:8px;height:8px;border-radius:50%;display:inline-block}
+@media(max-width:600px){
+  .chart-head{padding:20px 20px 14px}
+  .chart-legend{padding:14px 20px 20px;flex-wrap:wrap;gap:16px}
+}
+
+/* WHY HARVEST */
+.why-ofi{
+  padding:110px var(--gutter) 90px;
+  border-top:1px solid var(--line);
+  background:linear-gradient(180deg,#FFFFFF 0%,#F3F7FB 100%);
+}
+.why-head{
+  display:grid;grid-template-columns:1.1fr 1fr;gap:70px;
+  align-items:end;margin-bottom:60px;
+}
+.why-head > div:first-child{display:flex;flex-direction:column}
+.why-label{
+  display:inline-flex;align-items:center;gap:10px;align-self:flex-start;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:#fff;background:var(--blue);
+  padding:9px 18px;border-radius:99px;margin-bottom:26px;font-weight:700;
+}
+.why-label::before{content:'';width:6px;height:6px;border-radius:50%;background:#fff}
+.why-title{
+  font-size:clamp(32px,4vw,52px);font-weight:700;
+  letter-spacing:-.035em;line-height:1.05;max-width:15ch;
+}
+.why-title em{
+  font-style:normal;color:var(--blue);
+  background:linear-gradient(transparent 72%,rgba(90,155,212,.28) 72%);
+}
+.why-intro{font-size:13px;color:var(--mut);line-height:1.8;max-width:52ch}
+.why-intro b{color:var(--ink);font-weight:600}
+.why-intro + .why-intro{margin-top:14px}
+
+.why-dual{
+  display:grid;grid-template-columns:1fr auto 1fr;
+  border:1px solid var(--line);background:#fff;
+  box-shadow:0 30px 70px -40px rgba(30,42,56,.25);
+}
+.why-side{padding:56px 50px}
+.why-side .wn{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.2em;
+  color:var(--blue);margin-bottom:24px;font-weight:700;
+}
+.why-side .wt{
+  font-size:clamp(20px,2.1vw,28px);font-weight:700;
+  letter-spacing:-.025em;line-height:1.15;margin-bottom:18px;
+}
+.why-side .wd{font-size:12.5px;color:var(--mut);line-height:1.75;max-width:44ch}
+.why-side .wl{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px}
+.why-side .wl span{
+  font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--mut);
+  padding:6px 12px;border:1px solid var(--line);border-radius:99px;
+}
+.why-cross{
+  display:flex;align-items:center;justify-content:center;
+  width:90px;background:var(--panel);color:var(--blue-light);
+  font-size:22px;font-weight:400;
+}
+@media(max-width:820px){
+  .why-ofi{padding:70px var(--gutter) 60px}
+  .why-head{grid-template-columns:1fr;gap:24px;margin-bottom:40px}
+  .why-dual{grid-template-columns:1fr}
+  .why-cross{width:100%;height:70px}
+  .why-side{padding:34px 26px}
+}
+
+/* CONTACT */
+.newsletter{
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;
+  padding:80px var(--gutter);border-top:1px solid var(--line);align-items:start;
+}
+.news-left h2{
+  font-size:clamp(22px,2.4vw,32px);font-weight:700;letter-spacing:-.025em;
+  line-height:1.1;margin-bottom:14px;max-width:15ch;
+}
+.news-left p{font-size:12px;color:var(--mut);line-height:1.7;max-width:38ch}
+.news-right{display:flex;flex-direction:column;gap:14px;max-width:440px}
+.field{
+  display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid var(--ink);padding:14px 0 12px;
+  font-size:13px;font-weight:500;
+  transition:color .25s,border-color .25s,padding-left .25s;
+}
+.field::after{content:'↗';font-size:14px;color:var(--mut);transition:color .25s}
+.field:hover{color:var(--blue);border-color:var(--blue);padding-left:8px}
+.field:hover::after{color:var(--blue)}
+.field-btn{
+  display:flex;justify-content:center;align-items:center;
+  background:var(--ink);color:#fff;padding:16px 24px;
+  font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+  margin-top:8px;transition:background .25s;
+}
+.field-btn:hover{background:var(--blue)}
+@media(max-width:760px){
+  .newsletter{grid-template-columns:1fr;gap:30px;padding:60px var(--gutter)}
+}
+
+/* FOOTER */
+.site-foot{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:28px var(--gutter);border-top:1px solid var(--line);
+  font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--mut);font-weight:500;gap:20px;flex-wrap:wrap;
+}
+.site-foot nav{display:flex;gap:22px;flex-wrap:wrap;align-items:center}
+.site-foot nav a{transition:color .25s}
+.site-foot nav a:hover{color:var(--ink)}
+.site-foot nav a.nav-highlight{
+  color:var(--blue);font-weight:700;padding:5px 12px;
+  border-radius:99px;background:rgba(46,117,182,.10);
+  display:inline-flex;align-items:center;gap:6px;
+}
+.site-foot nav a.nav-highlight::before{
+  content:'';width:5px;height:5px;border-radius:50%;background:var(--blue);
+}
+.site-foot nav a.nav-highlight:hover{color:#fff;background:var(--blue)}
+.site-foot nav a.nav-highlight:hover::before{background:#fff}
+.socials{display:flex;gap:14px}
+.socials a{
+  width:22px;height:22px;border:1px solid var(--line);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:10px;
+  transition:background .25s,color .25s,border-color .25s;
+}
+.socials a:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+
+/* LIGHTBOX */
+.lb{
+  position:fixed;inset:0;background:rgba(20,30,42,.94);z-index:200;
+  display:none;align-items:center;justify-content:center;padding:24px;
+}
+.lb.open{display:flex}
+.lb .close{
+  position:absolute;top:20px;right:20px;width:38px;height:38px;
+  border-radius:50%;border:1px solid rgba(255,255,255,.3);
+  background:none;color:#fff;font-size:16px;cursor:pointer;
+  transition:background .25s,border-color .25s;
+}
+.lb .close:hover{background:var(--blue-light);border-color:var(--blue-light)}
+.lb .cap{
+  position:absolute;bottom:24px;left:0;right:0;text-align:center;
+  color:#fff;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+}
+.lb .soonbox{color:#fff;text-align:center;padding:24px;max-width:440px}
+.lb .soonbox svg{
+  width:40px;height:40px;stroke:var(--blue-light);fill:none;
+  stroke-width:1.5;margin-bottom:16px;
+}
+.lb .soonbox b{
+  display:block;font-size:20px;font-weight:600;letter-spacing:-.02em;line-height:1.3;
+}
+.lb .img-wrap{position:relative;display:inline-block}
+.lb .img-wrap img{
+  display:block;max-width:92vw;max-height:82vh;background:#fff;
+  filter:blur(28px) saturate(.55);
+  transition:filter .6s;
+}
+.lb .img-wrap.revealable{cursor:pointer}
+.lb .img-wrap.revealed img{filter:blur(0) saturate(1)}
+.lb .img-wrap.revealable::after{
+  content:'Cliquer pour révéler';
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  padding:14px 26px;border:1px solid rgba(255,255,255,.55);
+  background:rgba(20,30,42,.65);color:#fff;
+  font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;
+  pointer-events:none;z-index:3;transition:opacity .3s;
+}
+.lb .img-wrap.revealed::after{opacity:0}
+.lb .img-wrap .load-overlay{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:16px;background:rgba(20,30,42,.4);z-index:2;pointer-events:none;
+  transition:opacity .4s;
+}
+.lb .img-wrap .load-overlay .spinner{
+  width:34px;height:34px;border-radius:50%;border:2px solid rgba(255,255,255,.18);
+  border-top-color:var(--blue-light);animation:spin 1s linear infinite;
+}
+.lb .img-wrap .load-overlay .load-label{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.22em;
+  text-transform:uppercase;color:#fff;font-weight:600;
+}
+.lb .img-wrap.revealed .load-overlay{opacity:0;visibility:hidden}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
 .rv.on{opacity:1;transform:none}
+
+@media(max-width:600px){:root{--gutter:20px}}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+  html{scroll-behavior:auto}
+}
 </style>
-<base target="_blank">
 </head>
 <body>
 
-<nav>
-  <div class="logo">WD<span style="color:var(--accent)">.</span></div>
-  <div class="links">
-    <a href="#histoire">Histoire</a><a href="#competences">Index</a><a href="#contact">Contact</a>
-  </div>
-</nav>
+<div class="page-label" data-i18n="page.label">0.1 : Candidature · Stage</div>
 
-<!-- HERO -->
-<header class="hero">
-  <div class="kicker">CV Portfolio — 2019 → maintenant</div>
-  <h1>
-    <span>Ingénieur</span>
-    <span class="it">des procédés,</span>
-    <span>une appétence pour la <em>finance.</em></span>
-  </h1>
-  <div class="meta">
-    <div>Profil<b>Asset Manager Advisory · Finance</b></div>
-    <div>Base<b>Douala, Cameroun</b></div>
-    <div>Contact<b>+237 698 385 430</b></div>
-    <div>Mobilité<b>Nationale & internationale — Permis B</b></div>
+<header class="site-head" id="siteHead">
+  <div class="brand">
+    <div class="brand-mark"></div>
+    <div class="brand-name">Wongue<br>Davy Cédric</div>
   </div>
-  <div class="scroll-cue">Défiler</div>
+  <nav class="head-nav">
+    <a href="#histoire" data-target="histoire" data-i18n="nav.parcours">Parcours</a>
+    <a href="#certificats" data-target="certificats" data-i18n="nav.certificats">Certificats</a>
+    <a href="#harvest" data-target="harvest" data-i18n="nav.harvest" class="nav-highlight">Pourquoi Harvest</a>
+    <a href="#contact" data-target="contact" data-i18n="nav.contact">Contact</a>
+  </nav>
+  <div class="head-right">
+    <button class="lang-btn" id="langBtn" type="button" aria-label="Change language">
+      <span class="lg active" data-lang="fr">FR</span>
+      <span class="sep">/</span>
+      <span class="lg" data-lang="en">EN</span>
+    </button>
+    <a href="#contact" class="head-icon" title="Contact">↗</a>
+  </div>
 </header>
 
-<!-- MANIFESTE -->
-<section class="manifesto">
-  <p class="rv">Ingénieur en génie des procédés agroalimentaires, formé aux systèmes d'information et à la <em>Big Data</em>, certifié <em>Bloomberg Market Concepts</em> et en comptabilité financière par l'Université de Pennsylvanie. Rigoureux, attentif aux détails, animé par une <em>forte appétence pour la finance</em> — de l'audit industriel à l'analyse financière, c'est la même exigence : comprendre, chiffrer, décider.</p>
-  <div class="who rv">— Wongue Davy Cédric · ingénieur, orienté finance</div>
-</section>
-
-<!-- CHAPITRES -->
-<section class="chapters" id="histoire">
-  <div class="ch-head rv"><h2>Le parcours, en chapitres</h2><span>04 / 04</span></div>
-
-  <article class="chapter rv">
-    <div class="num">01</div>
-    <h3>L'appétence<span>Pourquoi l'asset management ?</span></h3>
-    <div class="body">
-      <p>L'ingénierie m'a appris à modéliser des systèmes complexes et à piloter la performance par les données. La finance repose sur les mêmes fondamentaux : analyse rigoureuse, gestion du risque, décision chiffrée.</p>
-      <ul>
-        <li>Certification Bloomberg Market Concepts (BMC)</li>
-        <li>Introduction to Financial Accounting — Université de Pennsylvanie</li>
-        <li>Analyse de données en milieu industriel</li>
-      </ul>
-      <span class="fin">Objectif : contribuer à un poste en asset management, finance ou advisory.</span>
-    </div>
-  </article>
-
-  <article class="chapter rv">
-    <div class="num">02</div>
-    <h3>Le terrain<span>Industrie, qualité & audit</span></h3>
-    <div class="body">
-      <p>Six expériences en milieu industriel agroalimentaire, de la production au système de management qualité.</p>
-      <ul>
-        <li><b>Olam Agri</b> — Gap analysis FSSC 22000, 23 non-conformités traitées, taux de conformité de 91% à l'audit blanc</li>
-        <li><b>Michele's Industries</b> — +40% de recyclage des conditionnements, −15% d'arrêts non planifiés</li>
-        <li><b>AVRAM APTUS</b> — 8 micro-industries accompagnées, variabilité produit réduite de 18%, 32 opérateurs formés</li>
-        <li><b>FBI — Food & Beverages Industries</b> — optimisation formulation/coût de 12%, pertes process réduites de 8%</li>
-        <li><b>OK Foods</b> — audits ISO 22000, rebuts réduits de 6% en 8 semaines</li>
-        <li><b>SIC Cacao</b> — +10% de productivité torréfaction/broyage</li>
-      </ul>
-      <span class="date">2021 — 2026 · Douala, Cameroun</span>
-      <span class="fin">Transférable : audit, conformité, KPI, analyse de données, amélioration continue.</span>
-    </div>
-  </article>
-
-  <article class="chapter rv">
-    <div class="num">03</div>
-    <h3>La donnée<span>Master Systèmes d'Information & Big Data</span></h3>
-    <div class="body">
-      <p>Master 1 en Management des Systèmes d'Information et Big Data à l'ESSEC de Douala — l'alliance de la rigueur d'ingénieur et des outils de la donnée moderne.</p>
-      <span class="date">2026 — 2027 · ESSEC Douala, en cours</span>
-      <span class="fin">Outils : Excel avancé, ERP, AutoCAD, analyse de données, notions BI.</span>
-    </div>
-  </article>
-
-  <article class="chapter rv">
-    <div class="num">04</div>
-    <h3>Les preuves<span>Formation & certifications</span></h3>
-    <div class="body">
-      <p>Diplôme d'ingénieur en génie des procédés agroalimentaires — Université Catholique Saint-Jérôme de Douala (2024). Cycle préparatoire intégré en sciences de l'ingénieur (2021).</p>
-      <ul>
-        <li>Internal Auditing : Fundamental Principles — Alison</li>
-        <li>ISO 45001 Internal Auditing Strategies — Alison</li>
-        <li>Effective ISO 9001 Internal Auditing Practices — Alison</li>
-      </ul>
-      <span class="date">2019 — 2027</span>
-      <span class="fin">Certifié Bloomberg · certifié comptabilité financière (UPenn) · auditeur interne ISO 9001/45001.</span>
-    </div>
-  </article>
-</section>
-
-<!-- INTERLUDE INTERACTIF -->
-<section class="interlude">
-  <h2 class="rv">Une trajectoire, deux forces.</h2>
-  <p class="sub rv">Survolez ou touchez le graphique — de l'ingénierie opérationnelle vers la finance d'analyse.</p>
-  <canvas id="chart"></canvas>
-  <div class="chart-legend rv">
-    <span><i style="background:var(--accent2)"></i>Excellence industrielle & qualité</span>
-    <span><i style="background:var(--accent)"></i>Compétences finance & data</span>
+<!-- HERO -->
+<section class="hero-ss" id="top">
+  <div class="hero-left">
+    <h1 data-i18n-html="hero.title">Ingénieur, formé à la <em>finance</em> &amp; à l'analyse de données.</h1>
+    <p class="hero-lede" data-i18n="hero.lede">Une candidature spontanée pour un stage chez Harvest Asset Management : analyse, reporting, suivi de portefeuille et rigueur opérationnelle.</p>
+    <a href="#certificats" class="link-underline" data-target="certificats" data-i18n="hero.link">Voir les documents</a>
   </div>
-  <div class="chart-note rv">Illustration interactive — parcours 2019 → 2027</div>
-  <br>
-  <button class="btn-line rv" id="replay">↻ Rejouer la courbe</button>
-</section>
 
-<!-- INDEX COMPÉTENCES -->
-<section class="index" id="competences">
-  <div class="ch-head rv" style="margin-bottom:2rem"><h2>Index des compétences</h2><span>08 entrées</span></div>
-  <div class="row rv"><span class="i">01</span><div class="n">Analyse financière<small>Terminal Bloomberg · BMC certifié</small></div><span class="tag">Bloomberg</span></div>
-  <div class="row rv"><span class="i">02</span><div class="n">Comptabilité financière<small>Université de Pennsylvanie</small></div><span class="tag">UPenn</span></div>
-  <div class="row rv"><span class="i">03</span><div class="n">Audit interne<small>ISO 9001 · ISO 45001 · FSSC 22000</small></div><span class="tag">ISO</span></div>
-  <div class="row rv"><span class="i">04</span><div class="n">Analyse de données<small>KPI · Ishikawa · gap analysis · traçabilité</small></div><span class="tag">Data</span></div>
-  <div class="row rv"><span class="i">05</span><div class="n">Excel · Word · PowerPoint<small>Maîtrise avancée · modélisation</small></div><span class="tag">Office</span></div>
-  <div class="row rv"><span class="i">06</span><div class="n">Qualité & conformité<small>HACCP · ISO 22000 · BPH/BPF · 5S</small></div><span class="tag">Qualité</span></div>
-  <div class="row rv"><span class="i">07</span><div class="n">Systèmes d'information & Big Data<small>Master 1 ESSEC · notions ERP, AutoCAD</small></div><span class="tag">SI/Big Data</span></div>
-  <div class="row rv"><span class="i">08</span><div class="n">Soft skills<small>Esprit analytique · pensée critique · leadership · négociation</small></div><span class="tag">Humain</span></div>
-</section>
-
-<!-- LANGUES & MOBILITÉ -->
-<section class="duo">
-  <div class="col rv">
-    <h3>Langues</h3>
-    <div class="item"><span>Français</span><span class="lv">Natif</span></div>
-    <div class="item"><span>Anglais</span><span class="lv">Courant — TOEFL C1</span></div>
-    <div class="item"><span>Allemand</span><span class="lv">Notions</span></div>
+  <div class="hero-right">
+    <div class="hero-overlay">
+      <div class="rule"></div>
+      <div class="h-name">
+        Wongue Davy Cédric
+        <em data-i18n="hero.role">Candidature stage</em>
+      </div>
+      <div class="h-meta">
+        <span><span class="dot"></span><span data-i18n="hero.meta1">Douala, Cameroun</span></span>
+        <span><span class="dot"></span><span data-i18n="hero.meta2">Disponible · 6 mois</span></span>
+      </div>
+    </div>
   </div>
-  <div class="col rv">
-    <h3>Mobilité</h3>
-    <div class="item"><span>Permis B</span><span class="lv">Validé</span></div>
-    <div class="item"><span>Mobilité nationale</span><span class="lv">Disponible</span></div>
-    <div class="item"><span>Mobilité internationale</span><span class="lv">Si nécessaire</span></div>
+</section>
+
+<!-- PARCOURS -->
+<section class="section-ss" id="histoire">
+  <div class="head-row">
+    <h2 class="h-big" data-i18n="parcours.title">Quatre raisons de me confier un stage.</h2>
+    <p class="section-lede rv" data-i18n="parcours.lede">Diplômé ingénieur (2025), formé à la finance par l'Université de Pennsylvanie et initié aux marchés financiers (Bloomberg Market Concepts). Un profil qui associe la rigueur industrielle à la discipline de l'analyse financière.</p>
+  </div>
+
+  <div class="blend-cards">
+    <article class="blend-card rv">
+      <div class="blend-num">01</div>
+      <p class="blend-intro" data-i18n-html="card1.intro">Un stage réussi, c'est d'abord de la <em>fiabilité</em> : livrer un dossier juste, dans les délais, avec méthode.</p>
+      <div class="blend-foot">
+        <div class="blend-name"><span data-i18n="card1.name">La rigueur</span><span class="circ"></span></div>
+        <div class="blend-sub" data-i18n="card1.sub">Méthode &amp; fiabilité</div>
+        <div class="dot-rating">●●●●●</div>
+      </div>
+    </article>
+
+    <article class="blend-card rv">
+      <div class="blend-num">02</div>
+      <p class="blend-intro" data-i18n-html="card2.intro">Chiffrer une donnée, suivre un écart, détecter une anomalie : <em>les gestes du terrain industriel sont ceux de l'analyse financière.</em></p>
+      <div class="blend-foot">
+        <div class="blend-name"><span data-i18n="card2.name">L'analyse</span><span class="circ"></span></div>
+        <div class="blend-sub" data-i18n="card2.sub">Chiffres &amp; méthode</div>
+        <div class="dot-rating">●●●●●</div>
+      </div>
+    </article>
+
+    <article class="blend-card rv">
+      <div class="blend-num">03</div>
+      <p class="blend-intro" data-i18n-html="card3.intro">Excel, Bloomberg, reporting : des outils qui transforment une donnée brute en <em>information exploitable et partageable.</em></p>
+      <div class="blend-foot">
+        <div class="blend-name"><span data-i18n="card3.name">Les outils</span><span class="circ"></span></div>
+        <div class="blend-sub" data-i18n="card3.sub">Excel · Bloomberg</div>
+        <div class="dot-rating">●●●●<span class="off">●</span></div>
+      </div>
+    </article>
+
+    <article class="blend-card rv">
+      <div class="blend-num">04</div>
+      <p class="blend-intro" data-i18n-html="card4.intro">Gestion d'actifs, marchés, portefeuilles : un <em>secteur exigeant</em> où chaque détail compte et où la confiance se construit dossier après dossier.</p>
+      <div class="blend-foot">
+        <div class="blend-name"><span data-i18n="card4.name">Le cap</span><span class="circ"></span></div>
+        <div class="blend-sub" data-i18n="card4.sub">Gestion d'actifs</div>
+        <div class="dot-rating">●●●●●</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- TERRAIN -->
+<section class="two-col" id="terrain">
+  <div class="col-text">
+    <h2 data-i18n="terrain.title">Le terrain. Cinq expériences industrielles, un même réflexe : vérifier.</h2>
+    <p data-i18n="terrain.p">Du contrôle qualité à la standardisation industrielle, j'ai appris à lire un dossier, à suivre un écart, à dialoguer avec des interlocuteurs variés et à produire un reporting fiable — les gestes du quotidien dans une équipe de gestion d'actifs.</p>
+    <ul>
+      <li data-i18n-html="terrain.li1"><b>Olam Agri</b>, suivi qualité et conformité sur ligne de production, analyse de données et reporting opérationnel.</li>
+      <li data-i18n-html="terrain.li2"><b>Michele's Industries</b>, analyse sous Excel, 3 postes standardisés, contrôle de conformité ANOR. Recyclage +40 %, arrêts −15 %.</li>
+      <li data-i18n-html="terrain.li3"><b>AVRAM APTUS</b>, 04 micro-industries accompagnées (SOP, plans HACCP), variabilité réduite de 18 %.</li>
+      <li data-i18n-html="terrain.li4"><b>FBI · OK Foods · SIC Cacao</b>, bilans matière/énergie, contrôles QHSE, analyse Ishikawa.</li>
+    </ul>
+  </div>
+  <div class="col-visual">
+    <div class="visual-panel">
+      <div class="big-num">05</div>
+      <div class="big-label" data-i18n="terrain.biglabel">Expériences</div>
+    </div>
+    <div class="info-panel">
+      <div class="ip-name">Wongue Davy Cédric</div>
+      <div class="info-row"><span data-i18n="info.field">Terrain</span><b>2021 / 2026</b></div>
+      <div class="info-row"><span data-i18n="info.location">Lieu</span><b data-i18n="info.location.val">Douala, CM</b></div>
+      <div class="info-row"><span data-i18n="info.rigour">Rigueur</span><span class="dots">●●●●●</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTILS -->
+<section class="two-col reverse" id="outils">
+  <div class="col-text">
+    <h2 data-i18n="outils.title">Les outils. Excel et Bloomberg au service de l'analyse.</h2>
+    <p data-i18n="outils.p">Les compétences mobilisables dès le premier jour d'un stage : structurer une donnée, produire un tableau de bord lisible et restituer une analyse claire, sans jargon.</p>
+    <ul>
+      <li data-i18n-html="outils.li2"><b>Excel</b> : Excel Fundamentals for Data Analysis (Macquarie University)</li>
+      <li data-i18n-html="outils.li3"><b>Bloomberg</b> : Bloomberg Market Concepts (BMC)</li>
+      <li data-i18n-html="outils.li4"><b>Analyse</b> : suivi d'indicateurs (KPI), gap analysis, rapprochements</li>
+    </ul>
+    <a href="#certificats" class="link-underline" data-target="certificats" data-i18n="outils.link">Voir les certifications</a>
+  </div>
+  <div class="col-visual">
+    <div class="visual-panel">
+      <div class="big-num">04</div>
+      <div class="big-label" data-i18n="outils.biglabel">Certifications</div>
+    </div>
+    <div class="info-panel">
+      <div class="ip-name" data-i18n="outils.stack">Stack technique</div>
+      <div class="info-row"><span>Excel</span><b data-i18n="outils.advanced">Avancé</b></div>
+      <div class="info-row"><span>Bloomberg</span><b data-i18n="outils.certified2">Certifié</b></div>
+      <div class="info-row"><span>Anglais</span><b>C1</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATS -->
+<section class="section-ss" id="certificats">
+  <div class="head-row">
+    <h2 class="h-big" data-i18n="certs.title">Certificats &amp; attestations.</h2>
+    <p class="section-lede rv" data-i18n="certs.lede">Diplômes, certificats et attestations vérifiables. Cliquez sur une vignette pour agrandir l'aperçu.</p>
+  </div>
+
+  <div class="cert-grid" id="certGrid">
+    <div class="cert-empty" id="certEmpty" data-i18n="certs.loading">Chargement des documents…</div>
+  </div>
+</section>
+
+<!-- COMPETENCES -->
+<section class="section-ss" id="competences">
+  <div class="head-row">
+    <h2 class="h-big" data-i18n="path.title">Une trajectoire, deux forces.</h2>
+    <p class="section-lede rv" data-i18n="path.lede">De l'excellence industrielle vers les compétences finance &amp; data. La même exigence : comprendre, chiffrer, restituer.</p>
+  </div>
+
+  <div class="chart-box rv">
+    <div class="chart-head">
+      <div class="l"><span class="dot-live"></span><b data-i18n="chart.flow">Flux</b> · <span data-i18n="chart.range">parcours 2021 → 2026</span></div>
+      <div class="l" data-i18n="chart.perpetual">vue d'ensemble</div>
+    </div>
+
+    <svg class="chart-svg" viewBox="0 0 800 280" preserveAspectRatio="none" aria-hidden="true">
+      <g stroke="rgba(30,42,56,.06)" stroke-width="1">
+        <line x1="0" y1="56" x2="800" y2="56"/>
+        <line x1="0" y1="112" x2="800" y2="112"/>
+        <line x1="0" y1="168" x2="800" y2="168"/>
+        <line x1="0" y1="224" x2="800" y2="224"/>
+      </g>
+      <path d="M0,150 C80,120 160,140 240,110 C320,80 400,140 480,100 C560,60 640,120 720,90 C760,75 780,80 800,72"
+            fill="none" stroke="#2E75B6" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M0,200 C80,190 160,170 240,180 C320,190 400,140 480,150 C560,160 640,110 720,120 C760,125 780,110 800,100"
+            fill="none" stroke="#5A9BD4" stroke-width="2.6" stroke-linecap="round"/>
+      <g fill="#2E75B6">
+        <circle cx="0" cy="150" r="3"/><circle cx="240" cy="110" r="3"/>
+        <circle cx="480" cy="100" r="3"/><circle cx="720" cy="90" r="3"/>
+      </g>
+      <g fill="#5A9BD4">
+        <circle cx="0" cy="200" r="3"/><circle cx="240" cy="180" r="3"/>
+        <circle cx="480" cy="150" r="3"/><circle cx="720" cy="120" r="3"/>
+      </g>
+      <g font-family="IBM Plex Mono, monospace" font-size="10" fill="rgba(102,118,135,.55)">
+        <text x="12" y="268">2021</text>
+        <text x="770" y="268" text-anchor="end">2026</text>
+      </g>
+    </svg>
+
+    <div class="chart-legend">
+      <span><i style="background:#2E75B6"></i><span data-i18n="chart.legend1">Excellence industrielle &amp; qualité</span></span>
+      <span><i style="background:#5A9BD4"></i><span data-i18n="chart.legend2">Finance, analyse &amp; data</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- WHY HARVEST -->
+<section class="why-ofi" id="harvest">
+  <div class="why-head">
+    <div>
+      <div class="why-label" data-i18n="why.label">Pourquoi Harvest ?</div>
+      <h2 class="why-title" data-i18n-html="why.title">Là où la <em>rigueur analytique</em> rencontre la gestion d'actifs.</h2>
+    </div>
+    <div>
+      <p class="why-intro" data-i18n="why.intro">Chez Harvest Asset Management, mes deux forces se rejoignent : la <b>rigueur analytique</b> construite sur le terrain industriel et la <b>discipline financière</b> acquise par la formation et les certifications.</p>
+      <p class="why-intro" data-i18n="why.intro2">Une gestion d'actifs repose sur des données propres, des analyses structurées et un reporting irréprochable. C'est exactement ce que j'ai appris à produire — sur des lignes de production, dans des dossiers techniques, avec Excel et Bloomberg. Un stage chez Harvest serait pour moi l'occasion de mettre cette méthode au service d'un métier exigeant, au plus près des marchés.</p>
+    </div>
+  </div>
+
+  <div class="why-dual">
+    <div class="why-side">
+      <div class="wn">01</div>
+      <div class="wt" data-i18n="why.left.title">Rigueur &amp; analyse</div>
+      <div class="wd" data-i18n="why.left.desc">Contrôle qualité, standardisation, bilans matière et énergie : les gestes que j'ai pratiqués sur le terrain et qui m'ont appris à lire une donnée, à suivre un écart et à sécuriser un dossier.</div>
+      <div class="wl">
+        <span>Analyse</span><span>Méthode</span><span>Conformité</span>
+      </div>
+    </div>
+    <div class="why-cross">+</div>
+    <div class="why-side">
+      <div class="wn">02</div>
+      <div class="wt" data-i18n="why.right.title">Finance &amp; gestion d'actifs</div>
+      <div class="wd" data-i18n="why.right.desc">Comptabilité financière, Excel, Bloomberg, analyse de coûts : les compétences que je construis pour comprendre un portefeuille, structurer une donnée et produire un reporting fiable.</div>
+      <div class="wl">
+        <span>Finance</span><span>Data</span><span>Reporting</span>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section class="contact" id="contact">
-  <h2 class="rv">La suite,<br><em>avec vous ?</em></h2>
-  <p class="rv">Disponible pour un poste en asset management, finance ou advisory — au Cameroun ou à l'international.</p>
-  <div class="links rv">
-    <a href="tel:+237698385430">+237 698 385 430</a>
-    <a href="#">LinkedIn</a>
-    <a href="#">CV PDF</a>
+<section class="newsletter" id="contact">
+  <div class="news-left rv">
+    <h2 data-i18n="contact.title">Prêt à rejoindre Harvest Asset Management.</h2>
+    <p data-i18n="contact.p">Disponible pour un stage à Douala (6 mois) : analyse de données, suivi d'indicateurs, reporting et support aux équipes de gestion. Candidature spontanée — ouvert à tout poste où ma rigueur analytique peut servir.</p>
   </div>
-  <div class="mob rv"><b>Permis B</b> · Mobilité nationale & internationale</div>
+  <div class="news-right rv">
+    <a href="tel:+237698385430" class="field"><span>+237 698 385 430</span></a>
+    <a href="mailto:davycedricw@outlook.com" class="field"><span>davycedricw@outlook.com</span></a>
+    <a href="cv-wongue-davy-cedric.pdf" class="field-btn" download><span data-i18n="contact.btn">Télécharger le CV PDF</span></a>
+  </div>
 </section>
 
-<footer>© 2026 Wongue Davy Cédric — Ingénieur · Asset Management & Finance</footer>
+<footer class="site-foot">
+  <div>© 2026 Wongue Davy Cédric</div>
+  <nav>
+    <a href="#histoire" data-target="histoire" data-i18n="nav.parcours">Parcours</a>
+    <a href="#certificats" data-target="certificats" data-i18n="nav.certificats">Certificats</a>
+    <a href="#harvest" data-target="harvest" data-i18n="nav.harvest" class="nav-highlight">Pourquoi Harvest</a>
+    <a href="#contact" data-target="contact" data-i18n="nav.contact">Contact</a>
+  </nav>
+  <div class="socials">
+    <a href="mailto:davycedricw@outlook.com" title="Email">@</a>
+    <a href="mailto:davycedricw@outlook.com" title="Email">✉</a>
+    <a href="#top" data-target="top" title="Top">↑</a>
+  </div>
+</footer>
+
+<div class="lb" id="lightbox">
+  <button class="close" id="lbClose" type="button">×</button>
+  <div id="lbContent"></div>
+  <div class="cap" id="lbCap"></div>
+</div>
 
 <script>
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('on')})},{threshold:.12});
-document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+var I18N = {
+  fr: {
+    'page.label': '0.1 : Candidature · Stage',
+    'nav.parcours': 'Parcours',
+    'nav.certificats': 'Certificats',
+    'nav.harvest': 'Pourquoi Harvest',
+    'nav.contact': 'Contact',
 
-/* Chart : deux courbes animées (industrie constante, finance/data en forte montée) */
-var cv=document.getElementById('chart'),cx=cv.getContext('2d');
-var eng=[],fin=[],prog=0,raf;
-function resize(){cv.width=cv.getBoundingClientRect().width*devicePixelRatio;cv.height=320*devicePixelRatio;cx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);}
-function build(){
-  var W=cv.getBoundingClientRect().width,H=320;
-  eng=[];fin=[];
-  for(var i=0;i<=60;i++){var t=i/60;
-    eng.push({x:t*W,y:H-50-(70+8*Math.sin(t*7)-t*18)});
-    fin.push({x:t*W,y:H-30-(14+(H-90)*(1-Math.exp(-t*1.9))+7*Math.sin(t*9)*(1-t))});
+    'hero.title': "Ingénieur, formé à la <em>finance</em> &amp; à l'analyse de données.",
+    'hero.lede': "Une candidature spontanée pour un stage chez Harvest Asset Management : analyse, reporting, suivi de portefeuille et rigueur opérationnelle.",
+    'hero.link': 'Voir les documents',
+    'hero.role': 'Candidature stage',
+    'hero.meta1': 'Douala, Cameroun',
+    'hero.meta2': 'Disponible · 6 mois',
+
+    'parcours.title': 'Quatre raisons de me confier un stage.',
+    'parcours.lede': "Diplômé ingénieur (2025), formé à la finance par l'Université de Pennsylvanie et initié aux marchés financiers (Bloomberg Market Concepts). Un profil qui associe la rigueur industrielle à la discipline de l'analyse financière.",
+
+    'card1.intro': "Un stage réussi, c'est d'abord de la <em>fiabilité</em> : livrer un dossier juste, dans les délais, avec méthode.",
+    'card1.name': 'La rigueur', 'card1.sub': 'Méthode &amp; fiabilité',
+    'card2.intro': "Chiffrer une donnée, suivre un écart, détecter une anomalie : <em>les gestes du terrain industriel sont ceux de l'analyse financière.</em>",
+    'card2.name': "L'analyse", 'card2.sub': 'Chiffres &amp; méthode',
+    'card3.intro': "Excel, Bloomberg, reporting : des outils qui transforment une donnée brute en <em>information exploitable et partageable.</em>",
+    'card3.name': 'Les outils', 'card3.sub': 'Excel · Bloomberg',
+    'card4.intro': "Gestion d'actifs, marchés, portefeuilles : un <em>secteur exigeant</em> où chaque détail compte et où la confiance se construit dossier après dossier.",
+    'card4.name': 'Le cap', 'card4.sub': "Gestion d'actifs",
+
+    'terrain.title': 'Le terrain. Cinq expériences industrielles, un même réflexe : vérifier.',
+    'terrain.p': "Du contrôle qualité à la standardisation industrielle, j'ai appris à lire un dossier, à suivre un écart, à dialoguer avec des interlocuteurs variés et à produire un reporting fiable — les gestes du quotidien dans une équipe de gestion d'actifs.",
+    'terrain.li1': "<b>Olam Agri</b>, suivi qualité et conformité sur ligne de production, analyse de données et reporting opérationnel.",
+    'terrain.li2': "<b>Michele's Industries</b>, analyse sous Excel, 3 postes standardisés, contrôle de conformité ANOR. Recyclage +40 %, arrêts −15 %.",
+    'terrain.li3': '<b>AVRAM APTUS</b>, 04 micro-industries accompagnées (SOP, plans HACCP), variabilité réduite de 18 %.',
+    'terrain.li4': '<b>FBI · OK Foods · SIC Cacao</b>, bilans matière/énergie, contrôles QHSE, analyse Ishikawa.',
+    'terrain.biglabel': 'Expériences',
+
+    'info.field': 'Terrain',
+    'info.location': 'Lieu',
+    'info.location.val': 'Douala, CM',
+    'info.rigour': 'Rigueur',
+
+    'outils.title': "Les outils. Excel et Bloomberg au service de l'analyse.",
+    'outils.p': "Les compétences mobilisables dès le premier jour d'un stage : structurer une donnée, produire un tableau de bord lisible et restituer une analyse claire, sans jargon.",
+    'outils.li2': '<b>Excel</b> : Excel Fundamentals for Data Analysis (Macquarie University)',
+    'outils.li3': '<b>Bloomberg</b> : Bloomberg Market Concepts (BMC)',
+    'outils.li4': "<b>Analyse</b> : suivi d'indicateurs (KPI), gap analysis, rapprochements",
+    'outils.link': 'Voir les certifications',
+    'outils.biglabel': 'Certifications',
+    'outils.stack': 'Stack technique',
+    'outils.certified2': 'Certifié',
+    'outils.advanced': 'Avancé',
+
+    'certs.title': 'Certificats &amp; attestations.',
+    'certs.lede': "Diplômes, certificats et attestations vérifiables. Cliquez sur une vignette pour agrandir l'aperçu.",
+    'certs.loading': 'Chargement des documents…',
+
+    'path.title': 'Une trajectoire, deux forces.',
+    'path.lede': "De l'excellence industrielle vers les compétences finance & data. La même exigence : comprendre, chiffrer, restituer.",
+    'chart.flow': 'Flux',
+    'chart.range': 'parcours 2021 → 2026',
+    'chart.perpetual': "vue d'ensemble",
+    'chart.legend1': 'Excellence industrielle & qualité',
+    'chart.legend2': 'Finance, analyse & data',
+
+    'why.label': 'Pourquoi Harvest ?',
+    'why.title': "Là où la <em>rigueur analytique</em> rencontre la gestion d'actifs.",
+    'why.intro': "Chez Harvest Asset Management, mes deux forces se rejoignent : la <b>rigueur analytique</b> construite sur le terrain industriel et la <b>discipline financière</b> acquise par la formation et les certifications.",
+    'why.intro2': "Une gestion d'actifs repose sur des données propres, des analyses structurées et un reporting irréprochable. C'est exactement ce que j'ai appris à produire — sur des lignes de production, dans des dossiers techniques, avec Excel et Bloomberg. Un stage chez Harvest serait pour moi l'occasion de mettre cette méthode au service d'un métier exigeant, au plus près des marchés.",
+    'why.left.title': 'Rigueur & analyse',
+    'why.left.desc': "Contrôle qualité, standardisation, bilans matière et énergie : les gestes que j'ai pratiqués sur le terrain et qui m'ont appris à lire une donnée, à suivre un écart et à sécuriser un dossier.",
+    'why.right.title': "Finance & gestion d'actifs",
+    'why.right.desc': "Comptabilité financière, Excel, Bloomberg, analyse de coûts : les compétences que je construis pour comprendre un portefeuille, structurer une donnée et produire un reporting fiable.",
+
+    'contact.title': 'Prêt à rejoindre Harvest Asset Management.',
+    'contact.p': "Disponible pour un stage à Douala (6 mois) : analyse de données, suivi d'indicateurs, reporting et support aux équipes de gestion. Candidature spontanée — ouvert à tout poste où ma rigueur analytique peut servir.",
+    'contact.btn': 'Télécharger le CV PDF',
+
+    'soon.title': 'Aperçu en cours<br>de mise à jour',
+    'soon.long': 'Aperçu en cours de mise à jour',
+    'preview.loading': "Chargement de l'aperçu…",
+
+    'doc.diplome': "Diplôme d'ingénieur, Université Catholique Saint-Jérôme de Douala",
+    'doc.penn': 'Fundamentals of Finance, University of Pennsylvania',
+    'doc.c1english': "Certificat d'anglais niveau C1",
+    'doc.bloomberg': 'Bloomberg Market Concepts (BMC), Bloomberg'
+  },
+  en: {
+    'page.label': '0.1 : Application · Internship',
+    'nav.parcours': 'Journey',
+    'nav.certificats': 'Certificates',
+    'nav.harvest': 'Why Harvest',
+    'nav.contact': 'Contact',
+
+    'hero.title': 'Engineer, trained in <em>finance</em> &amp; data analysis.',
+    'hero.lede': "A spontaneous application for an internship at Harvest Asset Management: analysis, reporting, portfolio monitoring and operational rigour.",
+    'hero.link': 'View documents',
+    'hero.role': 'Internship application',
+    'hero.meta1': 'Douala, Cameroon',
+    'hero.meta2': 'Available · 6 months',
+
+    'parcours.title': 'Four reasons to entrust me with an internship.',
+    'parcours.lede': "Engineering graduate (2025), trained in finance by the University of Pennsylvania and introduced to financial markets (Bloomberg Market Concepts). A profile that combines industrial rigour with the discipline of financial analysis.",
+
+    'card1.intro': "A successful internship is first about <em>reliability</em>: delivering an accurate file, on time, with method.",
+    'card1.name': 'Rigour', 'card1.sub': 'Method &amp; reliability',
+    'card2.intro': "Quantifying data, tracking a variance, detecting an anomaly: <em>the gestures of the industrial field are those of financial analysis.</em>",
+    'card2.name': 'Analysis', 'card2.sub': 'Figures &amp; method',
+    'card3.intro': "Excel, Bloomberg, reporting: tools that turn raw data into <em>usable, shareable information.</em>",
+    'card3.name': 'The tools', 'card3.sub': 'Excel · Bloomberg',
+    'card4.intro': "Asset management, markets, portfolios: a <em>demanding sector</em> where every detail matters and trust is built file after file.",
+    'card4.name': 'The goal', 'card4.sub': 'Asset management',
+
+    'terrain.title': 'The field. Five industrial experiences, one same reflex: verify.',
+    'terrain.p': "From quality control to industrial standardisation, I learned to read a file, track a variance, engage with varied stakeholders and produce reliable reporting — the everyday gestures within an asset management team.",
+    'terrain.li1': '<b>Olam Agri</b>, quality and compliance monitoring on a production line, data analysis and operational reporting.',
+    'terrain.li2': "<b>Michele's Industries</b>, Excel-based analysis, 3 positions standardised, ANOR compliance control. Packaging recycling +40%, unplanned downtime −15%.",
+    'terrain.li3': '<b>AVRAM APTUS</b>, 04 micro-industries supported (SOPs, HACCP plans), product variability reduced by 18%.',
+    'terrain.li4': '<b>FBI · OK Foods · SIC Cacao</b>, mass and energy balances, QHSE controls, Ishikawa analysis.',
+    'terrain.biglabel': 'Experiences',
+
+    'info.field': 'Field',
+    'info.location': 'Location',
+    'info.location.val': 'Douala, CM',
+    'info.rigour': 'Rigour',
+
+    'outils.title': 'The tools. Excel and Bloomberg for analysis.',
+    'outils.p': "Skills usable from day one of an internship: structuring data, producing a readable dashboard and delivering clear analysis, without jargon.",
+    'outils.li2': '<b>Excel</b>: Excel Fundamentals for Data Analysis (Macquarie University)',
+    'outils.li3': '<b>Bloomberg</b>: Bloomberg Market Concepts (BMC)',
+    'outils.li4': "<b>Analysis</b>: KPI tracking, gap analysis, reconciliations",
+    'outils.link': 'View certifications',
+    'outils.biglabel': 'Certifications',
+    'outils.stack': 'Technical stack',
+    'outils.certified2': 'Certified',
+    'outils.advanced': 'Advanced',
+
+    'certs.title': 'Certificates &amp; attestations.',
+    'certs.lede': "Diplomas, certificates and verifiable attestations. Click a thumbnail to enlarge the preview.",
+    'certs.loading': 'Loading documents…',
+
+    'path.title': 'One path, two forces.',
+    'path.lede': "From industrial excellence to finance & data skills. The same requirement: understand, quantify, deliver.",
+    'chart.flow': 'Flow',
+    'chart.range': 'journey 2021 → 2026',
+    'chart.perpetual': 'overview',
+    'chart.legend1': 'Industrial excellence & quality',
+    'chart.legend2': 'Finance, analysis & data',
+
+    'why.label': 'Why Harvest?',
+    'why.title': 'Where <em>analytical rigour</em> meets asset management.',
+    'why.intro': "At Harvest Asset Management, my two strengths come together: the <b>analytical rigour</b> built in the industrial field and the <b>financial discipline</b> acquired through training and certifications.",
+    'why.intro2': "Asset management relies on clean data, structured analysis and flawless reporting. That is exactly what I have learned to produce — on production lines, in technical files, with Excel and Bloomberg. An internship at Harvest would be my opportunity to put this method at the service of a demanding profession, close to the markets.",
+    'why.left.title': 'Rigour & analysis',
+    'why.left.desc': "Quality control, standardisation, mass and energy balances: the gestures I practised in the field and that taught me to read data, track a variance and secure a file.",
+    'why.right.title': 'Finance & asset management',
+    'why.right.desc': "Financial accounting, Excel, Bloomberg, cost analysis: the skills I am building to understand a portfolio, structure data and produce reliable reporting.",
+
+    'contact.title': 'Ready to join Harvest Asset Management.',
+    'contact.p': "Available for an internship in Douala (6 months): data analysis, KPI monitoring, reporting and support to management teams. Spontaneous application — open to any role where my analytical rigour can serve.",
+    'contact.btn': 'Download CV PDF',
+
+    'soon.title': 'Preview being<br>updated',
+    'soon.long': 'Preview being updated',
+    'preview.loading': 'Loading preview…',
+
+    'doc.diplome': "Engineering Degree, Université Catholique Saint-Jérôme de Douala",
+    'doc.penn': 'Fundamentals of Finance, University of Pennsylvania',
+    'doc.c1english': 'English Certificate Level C1',
+    'doc.bloomberg': 'Bloomberg Market Concepts (BMC), Bloomberg'
   }
+};
+
+var currentLang = 'fr';
+
+function t(key){
+  return (I18N[currentLang] && I18N[currentLang][key]) || (I18N.fr[key]) || key;
 }
-function draw(){
-  var W=cv.getBoundingClientRect().width,H=320;
-  cx.clearRect(0,0,W,H);
-  cx.strokeStyle='rgba(236,233,226,.07)';cx.lineWidth=1;
-  for(var g=0;g<5;g++){var y=30+g*(H-60)/4;cx.beginPath();cx.moveTo(0,y);cx.lineTo(W,y);cx.stroke();}
-  cx.fillStyle='rgba(138,135,127,.9)';cx.font='10px IBM Plex Mono';
-  cx.fillText('2019',4,H-8);cx.fillText('2027',W-34,H-8);
-  var n=Math.max(2,Math.floor(prog*eng.length));
-  [['#7dd6c2',eng],['#c8f04a',fin]].forEach(function(pair){
-    var pts=pair[1];
-    cx.strokeStyle=pair[0];cx.lineWidth=2;cx.beginPath();
-    for(var i=0;i<n;i++){var p=pts[i];if(i===0)cx.moveTo(p.x,p.y);else cx.lineTo(p.x,p.y);}
-    cx.stroke();
-    var hp=pts[n-1];cx.fillStyle=pair[0];cx.beginPath();cx.arc(hp.x,hp.y,4,0,7);cx.fill();
+
+function applyTranslations(){
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var v = t(el.getAttribute('data-i18n'));
+    if(v) el.textContent = v;
   });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){
+    var v = t(el.getAttribute('data-i18n-html'));
+    if(v) el.innerHTML = v;
+  });
+  document.documentElement.lang = currentLang;
+  document.querySelectorAll('.lang-btn .lg').forEach(function(s){
+    s.classList.toggle('active', s.getAttribute('data-lang') === currentLang);
+  });
+  if(typeof renderCerts === 'function') renderCerts();
 }
-function animate(){prog=0;cancelAnimationFrame(raf);
-  (function step(){prog+=0.008;if(prog>1)prog=1;draw();if(prog<1)raf=requestAnimationFrame(step);})();}
-window.addEventListener('resize',function(){resize();build();draw();});
-resize();build();
-var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){animate();cio.disconnect();}})},{threshold:.4});
-cio.observe(cv);
-document.getElementById('replay').addEventListener('click',animate);
+
+function setLang(lang){
+  if(lang !== 'fr' && lang !== 'en') return;
+  currentLang = lang;
+  try{ localStorage.setItem('wd_lang', lang); }catch(e){}
+  applyTranslations();
+}
+
+document.getElementById('langBtn').addEventListener('click', function(){
+  setLang(currentLang === 'fr' ? 'en' : 'fr');
+});
+
+(function(){
+  try{
+    var saved = localStorage.getItem('wd_lang');
+    if(saved === 'en' || saved === 'fr') currentLang = saved;
+  }catch(e){}
+  if(currentLang !== 'fr') applyTranslations();
+})();
+
+/* NAVIGATION */
+(function(){
+  var head = document.getElementById('siteHead');
+  function headerHeight(){ return head ? head.getBoundingClientRect().height : 64; }
+  function scrollToId(id){
+    var el = document.getElementById(id);
+    if(!el) return;
+    var top = el.getBoundingClientRect().top + window.pageYOffset - headerHeight() - 18;
+    if(top < 0) top = 0;
+    window.scrollTo({top: top, behavior: 'smooth'});
+  }
+  document.querySelectorAll('a[data-target]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('data-target');
+      if(!document.getElementById(id)) return;
+      e.preventDefault();
+      scrollToId(id);
+      if(history.replaceState){ history.replaceState(null, '', '#' + id); }
+    });
+  });
+  window.addEventListener('load', function(){
+    if(window.location.hash){
+      var id = window.location.hash.substring(1);
+      if(document.getElementById(id)){ setTimeout(function(){ scrollToId(id); }, 80); }
+    }
+  });
+})();
+
+(function(){
+  var links = document.querySelectorAll('.head-nav a[data-target]');
+  var sections = [];
+  links.forEach(function(a){
+    var s = document.getElementById(a.getAttribute('data-target'));
+    if(s) sections.push({el: s, link: a});
+  });
+  function update(){
+    var y = window.scrollY + 140;
+    var cur = null;
+    sections.forEach(function(s){ if(s.el.offsetTop <= y) cur = s; });
+    links.forEach(function(a){ a.classList.remove('active'); });
+    if(cur) cur.link.classList.add('active');
+  }
+  window.addEventListener('scroll', update, {passive: true});
+  window.addEventListener('resize', update);
+  update();
+})();
+
+/* REVEAL */
+var io = new IntersectionObserver(function(es){
+  es.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('on'); });
+}, {threshold: .12, rootMargin: '0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+
+/* CERTIFICATS */
+var renderCerts;
+
+(function(){
+  var DOCUMENTS = [
+    {key:'doc.diplome',   type:'image/jpeg', data:'diplome-ingenieur-wongue-davy-cedric.jpg', revealable:true},
+    {key:'doc.penn',      type:'image/jpeg', data:'certificat-penn-finance.jpg',              revealable:true},
+    {key:'doc.c1english', type:'image/jpeg', data:'certificat-c1-anglais.jpg',                revealable:true},
+    {key:'doc.bloomberg', type:'image/jpeg', data:'certificat-bloomberg-bmc.jpg',             revealable:false}
+  ];
+  var grid = document.getElementById('certGrid');
+  var empty = document.getElementById('certEmpty');
+  var lb = document.getElementById('lightbox');
+  var lbContent = document.getElementById('lbContent');
+  var lbCap = document.getElementById('lbCap');
+  var lbClose = document.getElementById('lbClose');
+
+  function esc(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+  function soonBox(){
+    return '<div class="soon">' +
+      '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>' +
+      '<b>' + t('soon.title') + '</b>' +
+    '</div>';
+  }
+  function loadOverlay(){
+    return '<div class="load-overlay">' +
+      '<div class="spinner"></div>' +
+      '<div class="load-label">' + t('preview.loading') + '</div>' +
+    '</div>';
+  }
+
+  renderCerts = function(){
+    Array.prototype.slice.call(grid.children).forEach(function(c){
+      if(c !== empty) grid.removeChild(c);
+    });
+    if(DOCUMENTS.length === 0){ empty.style.display = ''; empty.textContent = t('certs.loading'); return; }
+    empty.style.display = 'none';
+
+    DOCUMENTS.forEach(function(c, idx){
+      var name = t(c.key);
+      var card = document.createElement('div');
+      card.className = 'cert-card';
+      card.addEventListener('click', function(){ openLightbox(idx); });
+
+      var thumb = document.createElement('div');
+      thumb.className = c.revealable ? 'cert-thumb preview-visible' : 'cert-thumb';
+
+      if(c.type.indexOf('pdf') === 0){
+        thumb.innerHTML = soonBox();
+      } else {
+        var img = document.createElement('img');
+        img.src = c.data; img.alt = name; img.loading = 'lazy';
+        img.onerror = function(){ thumb.innerHTML = soonBox(); };
+        thumb.appendChild(img);
+        if(!c.revealable){
+          thumb.insertAdjacentHTML('beforeend', loadOverlay());
+        }
+      }
+
+      var info = document.createElement('div');
+      info.className = 'cert-info';
+      info.innerHTML = '<div class="t">' + esc(name) + '</div>';
+
+      card.appendChild(thumb); card.appendChild(info);
+      grid.appendChild(card);
+    });
+  };
+
+  function openLightbox(idx){
+    var c = DOCUMENTS[idx];
+    var name = t(c.key);
+    lbContent.innerHTML = '';
+
+    if(c.type.indexOf('pdf') === 0){
+      var iframe = document.createElement('iframe');
+      iframe.src = c.data;
+      iframe.style.cssText = 'width:min(900px,92vw);height:82vh;background:#fff;border:0';
+      lbContent.appendChild(iframe);
+    } else {
+      var wrap = document.createElement('div');
+      wrap.className = c.revealable ? 'img-wrap revealable' : 'img-wrap';
+      var img = document.createElement('img');
+      img.src = c.data; img.alt = name;
+      img.onerror = function(){
+        lbContent.innerHTML = '<div class="soonbox"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b>' + t('soon.long') + '</b></div>';
+      };
+      wrap.appendChild(img);
+      wrap.insertAdjacentHTML('beforeend', loadOverlay());
+      if(c.revealable){
+        wrap.addEventListener('click', function(){ wrap.classList.add('revealed'); });
+      }
+      lbContent.appendChild(wrap);
+    }
+    lbCap.textContent = name;
+    lb.classList.add('open');
+  }
+
+  function closeLightbox(){ lb.classList.remove('open'); lbContent.innerHTML = ''; }
+  lbClose.addEventListener('click', closeLightbox);
+  lb.addEventListener('click', function(e){ if(e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLightbox(); });
+
+  renderCerts();
+})();
 </script>
 </body>
 </html>
